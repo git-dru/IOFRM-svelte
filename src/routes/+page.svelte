@@ -1,5 +1,24 @@
-<script>
-	let isLogin = true;
+<script lang="ts">
+	import type { Payload } from './+page';
+	import { _submitToHasura } from './+page';
+
+	let fullName: string | undefined;
+	let email: string | undefined;
+	let password: string | undefined;
+	let isLogin: boolean = true;
+
+	const handleSubmit = async (event: Event) => {
+		event.preventDefault();
+
+		const payload: Payload = {
+			email: email as string,
+			password: password as string,
+		};
+
+		if (!isLogin && fullName) {
+			payload.fullName = fullName;
+		}
+	};
 </script>
 
 <svelte:head>
@@ -25,17 +44,20 @@
 			<div class="data-input">
 				{#if !isLogin}
 				<input
+					bind:value={fullName}
 					class="border border-gray-300 rounded-md px-3 py-2 mb-4"
 					placeholder="Full Name"
 					required
 				/>
 				{/if}
 				<input
+					bind:value={email}
 					class="border border-gray-300 rounded-md px-3 py-2 mb-4"
 					placeholder="E-mail Address"
 					required
 				/>
 				<input
+					bind:value={password}
 					type="password"
 					class="border border-gray-300 rounded-md px-3 py-2"
 					placeholder="Password"

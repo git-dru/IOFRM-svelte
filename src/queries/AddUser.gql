@@ -1,0 +1,10 @@
+mutation InsertUser($name: bpchar, $email: bpchar, $password: bpchar) {
+  insert_users(objects: {name: $name, email: $email, password: $password}) {
+    affected_rows
+    returning {
+      id
+      name
+      email
+    }
+  }
+}
