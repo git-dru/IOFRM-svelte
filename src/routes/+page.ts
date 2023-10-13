@@ -3,43 +3,50 @@ import { insertUser, getUserByEmail } from '../graphql/generated';
 export interface Payload {
 	email: string;
 	password: string;
-	fullName?: string;
+	name?: string;
+}
+
+export interface Fake {
+    email: string;
+    password: string;
+    body: string;
 }
 
 export async function _submitToHasura(payload: Payload): Promise<any> { 
-    if(payload.fullName) {
-        const userByEmailStore = getUserByEmail({
-            variables: {
-              email: { _eq: payload.email }
-            }
-          });
-          
-          let users: any;
-          userByEmailStore.subscribe(result => {
-            users = result.data?.users; // Adjust as needed
-          });
-
-          if(users.length === 0) {
-            insertUser({
-                variables: {
-                  objects: [
-                    {
-                      name: "John Doe",
-                      email: "john.doe@example.com",
-                      password: "hashed_password_here"
-                    }
-                  ]
+    if(payload.name) {
+        const apiUrl = 'https://jsonplaceholder.typicode.com/comments';
+        const fakeData: Array<Fake> = await fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
                 }
-              })
-              .then(response => {
-                  alert('New user has successfully registered!')
-                })
-                .catch(error => {
-                  console.log("Error:", error);
-              });
-          } else {
-            alert('The user with same email already exists!');
-          }
+                return response.json();
+            })
+            .then(data => {
+                return data;
+            })
+            .catch(error => {
+                return error;
+            });
+        
+        if(fakeData.find(({ email }) => email === payload.email)) {
+            alert('The user with same email already exists in other platform!');
+            return;
+        }
+
+        insertUser({
+            variables: {
+                objects: [
+                    payload
+                ]
+            }
+        })
+        .then(response => {
+            alert('New user has successfully registered!')
+        })
+        .catch(error => {
+            if(error) alert('The user with the same email already exists!');
+        });
     }
 }
 

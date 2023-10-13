@@ -16,7 +16,7 @@
 		};
 
 		if (!isLogin && fullName) {
-			payload.fullName = fullName;
+			payload.name = fullName;
 		}
 
 		_submitToHasura(payload);
