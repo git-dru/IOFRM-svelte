@@ -28,13 +28,13 @@
 	<meta name="description" content="IOFRM App" />
 </svelte:head>
 
-<section class="flex relative w-full h-screen bg-[#23394a] text-white">
-	<div class="website-logo fixed top-1/2 w-[100px] left-[220px]">
-		<div class="bg-logo-dark">
+<section class="flex relative w-full h-screen bg-custom-background text-white">
+	<div class="website-logo fixed lg:top-1/2 md:top-[50px] w-[100px] lg:left-[220px] md:left-[50px] top-[50px] left-[50px]">
+		<div class="lg:bg-logo-dark md:bg-logo-light bg-logo-light">
 			<img class="opacity-0 cursor-pointer" src="/images/logo-light.svg" alt="logo image" />
 		</div>
 	</div>
-	<div class="bg-back-image w-[550px] bg-center bg-cover" />
+	<div class="bg-back-image lg:w-[550px] md:w-0 bg-center bg-cover" />
 	<div class="bg-custom-background max-w-[340px] mx-auto my-auto text-left form-content">
 		<h3 class="text-white text-[24px] font-bold mb-4">Get more things done with Loggin platform</h3>
 		<p class="text-white text-[18px] font-thin mb-8">Access to the most powerful tool in the entire design and web industry</p>
@@ -111,7 +111,6 @@
 </section>
 
 <style>
-
 	.form-content .page-links div:after {
 		position: absolute;
 		background-color: white;
@@ -138,7 +137,6 @@
 		background-color: #fff;
 		color: #23394a;
 	}
-
 	.form-content .form-button button {
 		color: #23394a;
 		font-weight: 700;
