@@ -1,38 +1,73 @@
-# create-svelte
+# IOFRM Svelte/Hasura
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Registering User with Svelte/Hasura.
 
-## Creating a project
+## Table of Contents
 
-If you're seeing this, you've probably already done this step. Congrats!
+1. [Getting Started](#getting-started)
+   - [Prerequisites](#prerequisites)
+   - [Installation](#installation)
+2. [Usage](#usage)
+3. [FakeAPI](#FakeAPI)
+4. [Built With](#built-with)
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Getting Started
 
-# create a new project in my-app
-npm create svelte@latest my-app
+To get a local copy up and running, follow these simple steps.
+
+### Prerequisites
+
+This is a list of things you need to have prior to installing the project.
+
+- Node.js
+- npm
+
+### Installation
+
+- git clone
+
+```sh
+https://github.com/git-dru/IOFRM-svelte.git
 ```
 
-## Developing
+- Navigate into the project directory:
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+```sh
+cd IOFRM-svelte
+```
 
-```bash
+- Install the dependencies:
+
+```sh
+npm install
+```
+
+## USAGE
+
+Start the script:
+
+For Docker Environment Setup
+```sh
+npm run db
+```
+
+To Run Project
+
+```sh
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+## FakeAPI Integration
 
-To create a production version of your app:
+Check platform users url:
 
-```bash
-npm run build
+```sh
+https://jsonplaceholder.typicode.com/comments
 ```
 
-You can preview the production build with `npm run preview`.
+## Built With
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- Node.js
+- SvelteKit
+- Docker
+- Hasura
