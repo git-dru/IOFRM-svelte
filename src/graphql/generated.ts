@@ -1,4 +1,4 @@
-import client from '../src/lib/ApolloClient/apolloClient';
+import client from "../lib/ApolloClient/apolloClient";
 import type {
         ApolloQueryResult, ObservableQuery, WatchQueryOptions, MutationOptions
       } from "@apollo/client";
@@ -19,53 +19,40 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
-  bpchar: { input: any; output: any; }
+  uuid: { input: any; output: any; }
 };
 
-/** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
-export type Int_Comparison_Exp = {
-  _eq?: InputMaybe<Scalars['Int']['input']>;
-  _gt?: InputMaybe<Scalars['Int']['input']>;
-  _gte?: InputMaybe<Scalars['Int']['input']>;
-  _in?: InputMaybe<Array<Scalars['Int']['input']>>;
-  _is_null?: InputMaybe<Scalars['Boolean']['input']>;
-  _lt?: InputMaybe<Scalars['Int']['input']>;
-  _lte?: InputMaybe<Scalars['Int']['input']>;
-  _neq?: InputMaybe<Scalars['Int']['input']>;
-  _nin?: InputMaybe<Array<Scalars['Int']['input']>>;
-};
-
-/** Boolean expression to compare columns of type "bpchar". All fields are combined with logical 'AND'. */
-export type Bpchar_Comparison_Exp = {
-  _eq?: InputMaybe<Scalars['bpchar']['input']>;
-  _gt?: InputMaybe<Scalars['bpchar']['input']>;
-  _gte?: InputMaybe<Scalars['bpchar']['input']>;
+/** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
+export type String_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['String']['input']>;
+  _gt?: InputMaybe<Scalars['String']['input']>;
+  _gte?: InputMaybe<Scalars['String']['input']>;
   /** does the column match the given case-insensitive pattern */
-  _ilike?: InputMaybe<Scalars['bpchar']['input']>;
-  _in?: InputMaybe<Array<Scalars['bpchar']['input']>>;
+  _ilike?: InputMaybe<Scalars['String']['input']>;
+  _in?: InputMaybe<Array<Scalars['String']['input']>>;
   /** does the column match the given POSIX regular expression, case insensitive */
-  _iregex?: InputMaybe<Scalars['bpchar']['input']>;
+  _iregex?: InputMaybe<Scalars['String']['input']>;
   _is_null?: InputMaybe<Scalars['Boolean']['input']>;
   /** does the column match the given pattern */
-  _like?: InputMaybe<Scalars['bpchar']['input']>;
-  _lt?: InputMaybe<Scalars['bpchar']['input']>;
-  _lte?: InputMaybe<Scalars['bpchar']['input']>;
-  _neq?: InputMaybe<Scalars['bpchar']['input']>;
+  _like?: InputMaybe<Scalars['String']['input']>;
+  _lt?: InputMaybe<Scalars['String']['input']>;
+  _lte?: InputMaybe<Scalars['String']['input']>;
+  _neq?: InputMaybe<Scalars['String']['input']>;
   /** does the column NOT match the given case-insensitive pattern */
-  _nilike?: InputMaybe<Scalars['bpchar']['input']>;
-  _nin?: InputMaybe<Array<Scalars['bpchar']['input']>>;
+  _nilike?: InputMaybe<Scalars['String']['input']>;
+  _nin?: InputMaybe<Array<Scalars['String']['input']>>;
   /** does the column NOT match the given POSIX regular expression, case insensitive */
-  _niregex?: InputMaybe<Scalars['bpchar']['input']>;
+  _niregex?: InputMaybe<Scalars['String']['input']>;
   /** does the column NOT match the given pattern */
-  _nlike?: InputMaybe<Scalars['bpchar']['input']>;
+  _nlike?: InputMaybe<Scalars['String']['input']>;
   /** does the column NOT match the given POSIX regular expression, case sensitive */
-  _nregex?: InputMaybe<Scalars['bpchar']['input']>;
+  _nregex?: InputMaybe<Scalars['String']['input']>;
   /** does the column NOT match the given SQL regular expression */
-  _nsimilar?: InputMaybe<Scalars['bpchar']['input']>;
+  _nsimilar?: InputMaybe<Scalars['String']['input']>;
   /** does the column match the given POSIX regular expression, case sensitive */
-  _regex?: InputMaybe<Scalars['bpchar']['input']>;
+  _regex?: InputMaybe<Scalars['String']['input']>;
   /** does the column match the given SQL regular expression */
-  _similar?: InputMaybe<Scalars['bpchar']['input']>;
+  _similar?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** ordering argument of a cursor */
@@ -81,16 +68,12 @@ export type Mutation_Root = {
   __typename?: 'mutation_root';
   /** delete data from the table: "users" */
   delete_users?: Maybe<Users_Mutation_Response>;
-  /** delete single row from the table: "users" */
-  delete_users_by_pk?: Maybe<Users>;
   /** insert data into the table: "users" */
   insert_users?: Maybe<Users_Mutation_Response>;
   /** insert a single row into the table: "users" */
   insert_users_one?: Maybe<Users>;
   /** update data of the table: "users" */
   update_users?: Maybe<Users_Mutation_Response>;
-  /** update single row of the table: "users" */
-  update_users_by_pk?: Maybe<Users>;
   /** update multiples rows of table: "users" */
   update_users_many?: Maybe<Array<Maybe<Users_Mutation_Response>>>;
 };
@@ -99,12 +82,6 @@ export type Mutation_Root = {
 /** mutation root */
 export type Mutation_RootDelete_UsersArgs = {
   where: Users_Bool_Exp;
-};
-
-
-/** mutation root */
-export type Mutation_RootDelete_Users_By_PkArgs = {
-  id: Scalars['Int']['input'];
 };
 
 
@@ -124,17 +101,8 @@ export type Mutation_RootInsert_Users_OneArgs = {
 
 /** mutation root */
 export type Mutation_RootUpdate_UsersArgs = {
-  _inc?: InputMaybe<Users_Inc_Input>;
   _set?: InputMaybe<Users_Set_Input>;
   where: Users_Bool_Exp;
-};
-
-
-/** mutation root */
-export type Mutation_RootUpdate_Users_By_PkArgs = {
-  _inc?: InputMaybe<Users_Inc_Input>;
-  _set?: InputMaybe<Users_Set_Input>;
-  pk_columns: Users_Pk_Columns_Input;
 };
 
 
@@ -165,8 +133,6 @@ export type Query_Root = {
   users: Array<Users>;
   /** fetch aggregated fields from the table: "users" */
   users_aggregate: Users_Aggregate;
-  /** fetch data from the table: "users" using primary key columns */
-  users_by_pk?: Maybe<Users>;
 };
 
 
@@ -187,19 +153,12 @@ export type Query_RootUsers_AggregateArgs = {
   where?: InputMaybe<Users_Bool_Exp>;
 };
 
-
-export type Query_RootUsers_By_PkArgs = {
-  id: Scalars['Int']['input'];
-};
-
 export type Subscription_Root = {
   __typename?: 'subscription_root';
   /** fetch data from the table: "users" */
   users: Array<Users>;
   /** fetch aggregated fields from the table: "users" */
   users_aggregate: Users_Aggregate;
-  /** fetch data from the table: "users" using primary key columns */
-  users_by_pk?: Maybe<Users>;
   /** fetch data from the table in a streaming manner: "users" */
   users_stream: Array<Users>;
 };
@@ -223,11 +182,6 @@ export type Subscription_RootUsers_AggregateArgs = {
 };
 
 
-export type Subscription_RootUsers_By_PkArgs = {
-  id: Scalars['Int']['input'];
-};
-
-
 export type Subscription_RootUsers_StreamArgs = {
   batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<Users_Stream_Cursor_Input>>;
@@ -237,10 +191,11 @@ export type Subscription_RootUsers_StreamArgs = {
 /** user table */
 export type Users = {
   __typename?: 'users';
-  email: Scalars['bpchar']['output'];
-  id: Scalars['Int']['output'];
-  name: Scalars['bpchar']['output'];
-  password: Scalars['bpchar']['output'];
+  email: Scalars['String']['output'];
+  id?: Maybe<Scalars['uuid']['output']>;
+  name: Scalars['String']['output'];
+  password: Scalars['String']['output'];
+  string?: Maybe<Scalars['String']['output']>;
 };
 
 /** aggregated selection of "users" */
@@ -253,17 +208,9 @@ export type Users_Aggregate = {
 /** aggregate fields of "users" */
 export type Users_Aggregate_Fields = {
   __typename?: 'users_aggregate_fields';
-  avg?: Maybe<Users_Avg_Fields>;
   count: Scalars['Int']['output'];
   max?: Maybe<Users_Max_Fields>;
   min?: Maybe<Users_Min_Fields>;
-  stddev?: Maybe<Users_Stddev_Fields>;
-  stddev_pop?: Maybe<Users_Stddev_Pop_Fields>;
-  stddev_samp?: Maybe<Users_Stddev_Samp_Fields>;
-  sum?: Maybe<Users_Sum_Fields>;
-  var_pop?: Maybe<Users_Var_Pop_Fields>;
-  var_samp?: Maybe<Users_Var_Samp_Fields>;
-  variance?: Maybe<Users_Variance_Fields>;
 };
 
 
@@ -273,58 +220,51 @@ export type Users_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-/** aggregate avg on columns */
-export type Users_Avg_Fields = {
-  __typename?: 'users_avg_fields';
-  id?: Maybe<Scalars['Float']['output']>;
-};
-
 /** Boolean expression to filter rows from the table "users". All fields are combined with a logical 'AND'. */
 export type Users_Bool_Exp = {
   _and?: InputMaybe<Array<Users_Bool_Exp>>;
   _not?: InputMaybe<Users_Bool_Exp>;
   _or?: InputMaybe<Array<Users_Bool_Exp>>;
-  email?: InputMaybe<Bpchar_Comparison_Exp>;
-  id?: InputMaybe<Int_Comparison_Exp>;
-  name?: InputMaybe<Bpchar_Comparison_Exp>;
-  password?: InputMaybe<Bpchar_Comparison_Exp>;
+  email?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  password?: InputMaybe<String_Comparison_Exp>;
+  string?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "users" */
 export enum Users_Constraint {
   /** unique or primary key constraint on columns "id" */
-  UsersPkey = 'users_pkey'
+  UsersIdKey = 'users_id_key'
 }
-
-/** input type for incrementing numeric columns in table "users" */
-export type Users_Inc_Input = {
-  id?: InputMaybe<Scalars['Int']['input']>;
-};
 
 /** input type for inserting data into table "users" */
 export type Users_Insert_Input = {
-  email?: InputMaybe<Scalars['bpchar']['input']>;
-  id?: InputMaybe<Scalars['Int']['input']>;
-  name?: InputMaybe<Scalars['bpchar']['input']>;
-  password?: InputMaybe<Scalars['bpchar']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  password?: InputMaybe<Scalars['String']['input']>;
+  string?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregate max on columns */
 export type Users_Max_Fields = {
   __typename?: 'users_max_fields';
-  email?: Maybe<Scalars['bpchar']['output']>;
-  id?: Maybe<Scalars['Int']['output']>;
-  name?: Maybe<Scalars['bpchar']['output']>;
-  password?: Maybe<Scalars['bpchar']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  password?: Maybe<Scalars['String']['output']>;
+  string?: Maybe<Scalars['String']['output']>;
 };
 
 /** aggregate min on columns */
 export type Users_Min_Fields = {
   __typename?: 'users_min_fields';
-  email?: Maybe<Scalars['bpchar']['output']>;
-  id?: Maybe<Scalars['Int']['output']>;
-  name?: Maybe<Scalars['bpchar']['output']>;
-  password?: Maybe<Scalars['bpchar']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  password?: Maybe<Scalars['String']['output']>;
+  string?: Maybe<Scalars['String']['output']>;
 };
 
 /** response of any mutation on the table "users" */
@@ -349,11 +289,7 @@ export type Users_Order_By = {
   id?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   password?: InputMaybe<Order_By>;
-};
-
-/** primary key columns input for table: users */
-export type Users_Pk_Columns_Input = {
-  id: Scalars['Int']['input'];
+  string?: InputMaybe<Order_By>;
 };
 
 /** select columns of table "users" */
@@ -365,33 +301,18 @@ export enum Users_Select_Column {
   /** column name */
   Name = 'name',
   /** column name */
-  Password = 'password'
+  Password = 'password',
+  /** column name */
+  String = 'string'
 }
 
 /** input type for updating data in table "users" */
 export type Users_Set_Input = {
-  email?: InputMaybe<Scalars['bpchar']['input']>;
-  id?: InputMaybe<Scalars['Int']['input']>;
-  name?: InputMaybe<Scalars['bpchar']['input']>;
-  password?: InputMaybe<Scalars['bpchar']['input']>;
-};
-
-/** aggregate stddev on columns */
-export type Users_Stddev_Fields = {
-  __typename?: 'users_stddev_fields';
-  id?: Maybe<Scalars['Float']['output']>;
-};
-
-/** aggregate stddev_pop on columns */
-export type Users_Stddev_Pop_Fields = {
-  __typename?: 'users_stddev_pop_fields';
-  id?: Maybe<Scalars['Float']['output']>;
-};
-
-/** aggregate stddev_samp on columns */
-export type Users_Stddev_Samp_Fields = {
-  __typename?: 'users_stddev_samp_fields';
-  id?: Maybe<Scalars['Float']['output']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  password?: InputMaybe<Scalars['String']['input']>;
+  string?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Streaming cursor of the table "users" */
@@ -404,16 +325,11 @@ export type Users_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Users_Stream_Cursor_Value_Input = {
-  email?: InputMaybe<Scalars['bpchar']['input']>;
-  id?: InputMaybe<Scalars['Int']['input']>;
-  name?: InputMaybe<Scalars['bpchar']['input']>;
-  password?: InputMaybe<Scalars['bpchar']['input']>;
-};
-
-/** aggregate sum on columns */
-export type Users_Sum_Fields = {
-  __typename?: 'users_sum_fields';
-  id?: Maybe<Scalars['Int']['output']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  password?: InputMaybe<Scalars['String']['input']>;
+  string?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** update columns of table "users" */
@@ -425,59 +341,50 @@ export enum Users_Update_Column {
   /** column name */
   Name = 'name',
   /** column name */
-  Password = 'password'
+  Password = 'password',
+  /** column name */
+  String = 'string'
 }
 
 export type Users_Updates = {
-  /** increments the numeric columns with given value of the filtered values */
-  _inc?: InputMaybe<Users_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Users_Set_Input>;
   /** filter the rows which have to be updated */
   where: Users_Bool_Exp;
 };
 
-/** aggregate var_pop on columns */
-export type Users_Var_Pop_Fields = {
-  __typename?: 'users_var_pop_fields';
-  id?: Maybe<Scalars['Float']['output']>;
-};
-
-/** aggregate var_samp on columns */
-export type Users_Var_Samp_Fields = {
-  __typename?: 'users_var_samp_fields';
-  id?: Maybe<Scalars['Float']['output']>;
-};
-
-/** aggregate variance on columns */
-export type Users_Variance_Fields = {
-  __typename?: 'users_variance_fields';
-  id?: Maybe<Scalars['Float']['output']>;
+/** Boolean expression to compare columns of type "uuid". All fields are combined with logical 'AND'. */
+export type Uuid_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['uuid']['input']>;
+  _gt?: InputMaybe<Scalars['uuid']['input']>;
+  _gte?: InputMaybe<Scalars['uuid']['input']>;
+  _in?: InputMaybe<Array<Scalars['uuid']['input']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']['input']>;
+  _lt?: InputMaybe<Scalars['uuid']['input']>;
+  _lte?: InputMaybe<Scalars['uuid']['input']>;
+  _neq?: InputMaybe<Scalars['uuid']['input']>;
+  _nin?: InputMaybe<Array<Scalars['uuid']['input']>>;
 };
 
 export type InsertUserMutationVariables = Exact<{
-  name?: InputMaybe<Scalars['bpchar']['input']>;
-  email?: InputMaybe<Scalars['bpchar']['input']>;
-  password?: InputMaybe<Scalars['bpchar']['input']>;
+  objects?: InputMaybe<Array<Users_Insert_Input> | Users_Insert_Input>;
 }>;
 
 
-export type InsertUserMutation = { __typename?: 'mutation_root', insert_users?: { __typename?: 'users_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'users', id: number, name: any, email: any }> } | null };
+export type InsertUserMutation = { __typename?: 'mutation_root', insert_users?: { __typename?: 'users_mutation_response', returning: Array<{ __typename?: 'users', name: string, email: string }> } | null };
 
 export type GetUserByEmailQueryVariables = Exact<{
-  email?: InputMaybe<Bpchar_Comparison_Exp>;
+  email?: InputMaybe<String_Comparison_Exp>;
 }>;
 
 
-export type GetUserByEmailQuery = { __typename?: 'query_root', users: Array<{ __typename?: 'users', email: any, id: number }> };
+export type GetUserByEmailQuery = { __typename?: 'query_root', users: Array<{ __typename?: 'users', email: string }> };
 
 
 export const InsertUserDoc = gql`
-    mutation InsertUser($name: bpchar, $email: bpchar, $password: bpchar) {
-  insert_users(objects: {name: $name, email: $email, password: $password}) {
-    affected_rows
+    mutation insertUser($objects: [users_insert_input!] = {}) {
+  insert_users(objects: $objects) {
     returning {
-      id
       name
       email
     }
@@ -485,14 +392,13 @@ export const InsertUserDoc = gql`
 }
     `;
 export const GetUserByEmailDoc = gql`
-    query getUserByEmail($email: bpchar_comparison_exp = {}) {
+    query getUserByEmail($email: String_comparison_exp = {}) {
   users(where: {email: $email}) {
     email
-    id
   }
 }
     `;
-export const InsertUser = (
+export const insertUser = (
             options: Omit<
               MutationOptions<any, InsertUserMutationVariables>, 
               "mutation"

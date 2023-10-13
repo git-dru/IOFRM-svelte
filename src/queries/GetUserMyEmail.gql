@@ -1,6 +1,5 @@
-query getUserByEmail($email: bpchar_comparison_exp = {}) {
+query getUserByEmail($email: String_comparison_exp = {}) {
   users(where: {email: $email}) {
     email
-    id
   }
 }

@@ -18,6 +18,8 @@
 		if (!isLogin && fullName) {
 			payload.fullName = fullName;
 		}
+
+		_submitToHasura(payload);
 	};
 </script>
 
@@ -40,7 +42,7 @@
 			<div class="relative text-[15px] mr-[20px] bg-transparent {isLogin ? 'text-bold' : 'text-medium'}" on:click={() => {isLogin = true}}>Login</div>
 			<div class="relative text-[15px] mr-[20px] bg-transparent {!isLogin ? 'text-bold' : 'text-medium'}" on:click={() => {isLogin = false}}>Register</div>
 		</div>
-		<form class="form-input">
+		<form class="form-input" on:submit={handleSubmit}>
 			<div class="data-input">
 				{#if !isLogin}
 				<input

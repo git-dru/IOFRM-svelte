@@ -1,9 +1,7 @@
-mutation InsertUser($name: bpchar, $email: bpchar, $password: bpchar) {
-  insert_users(objects: {name: $name, email: $email, password: $password}) {
-    affected_rows
+mutation insertUser($objects: [users_insert_input!] = {}) {
+  insert_users(objects: $objects) {
     returning {
-      id
-      name
+      name,
       email
     }
   }
